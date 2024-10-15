@@ -124,9 +124,14 @@
             <MainSource>MainSource</MainSource>
         </DelphiCompile>
         <DCCReference Include="PedidoVenda.View.pas">
-            <Form>Form1</Form>
+            <Form>frmPedidoVenda</Form>
             <FormType>dfm</FormType>
         </DCCReference>
+        <DCCReference Include="PedidoVenda.Controller.pas"/>
+        <DCCReference Include="PedidoVenda.Model.pas"/>
+        <DCCReference Include="Produto.Model.pas"/>
+        <DCCReference Include="Cliente.Model.pas"/>
+        <DCCReference Include="Database.Model.pas"/>
         <BuildConfiguration Include="Base">
             <Key>Base</Key>
         </BuildConfiguration>

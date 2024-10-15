@@ -10,6 +10,8 @@ object frmPedidoVenda: TfrmPedidoVenda
   Font.Height = -12
   Font.Name = 'Segoe UI'
   Font.Style = []
+  OnCreate = FormCreate
+  OnDestroy = FormDestroy
   TextHeight = 15
   object pnlInfoPedido: TPanel
     Left = 0
@@ -21,7 +23,7 @@ object frmPedidoVenda: TfrmPedidoVenda
     ExplicitTop = 0
     ExplicitWidth = 996
     object lblCodigoProduto: TLabel
-      Left = 16
+      Left = 15
       Top = 67
       Width = 75
       Height = 15
@@ -46,7 +48,7 @@ object frmPedidoVenda: TfrmPedidoVenda
       ParentFont = False
     end
     object lblQuantidade: TLabel
-      Left = 449
+      Left = 447
       Top = 67
       Width = 67
       Height = 15
@@ -59,7 +61,7 @@ object frmPedidoVenda: TfrmPedidoVenda
       ParentFont = False
     end
     object lblValorUnitario: TLabel
-      Left = 666
+      Left = 662
       Top = 67
       Width = 69
       Height = 15
@@ -72,7 +74,7 @@ object frmPedidoVenda: TfrmPedidoVenda
       ParentFont = False
     end
     object lblCodigoCliente: TLabel
-      Left = 359
+      Left = 358
       Top = 27
       Width = 69
       Height = 15
@@ -114,21 +116,22 @@ object frmPedidoVenda: TfrmPedidoVenda
       Top = 64
       Width = 121
       Height = 23
-      TabOrder = 0
+      TabOrder = 3
+      OnChange = edtCodigoProdutoChange
     end
     object edtQuantidade: TEdit
       Left = 520
       Top = 64
       Width = 121
       Height = 23
-      TabOrder = 1
+      TabOrder = 4
     end
     object edtValorUnitario: TEdit
       Left = 737
       Top = 64
       Width = 121
       Height = 23
-      TabOrder = 2
+      TabOrder = 5
     end
     object btnAdicionarProduto: TButton
       Left = 872
@@ -142,21 +145,24 @@ object frmPedidoVenda: TfrmPedidoVenda
       Font.Name = 'Segoe UI'
       Font.Style = [fsBold]
       ParentFont = False
-      TabOrder = 3
+      TabOrder = 6
+      OnClick = btnAdicionarProdutoClick
     end
     object edtCodigoCliente: TEdit
       Left = 433
       Top = 24
       Width = 121
       Height = 23
-      TabOrder = 4
+      TabOrder = 2
+      OnChange = edtCodigoClienteChange
     end
     object edtCodigoPedido: TEdit
       Left = 96
       Top = 24
       Width = 121
       Height = 23
-      TabOrder = 5
+      TabOrder = 0
+      OnChange = edtCodigoPedidoChange
     end
     object btnBuscarPedido: TButton
       Left = 223
@@ -170,7 +176,8 @@ object frmPedidoVenda: TfrmPedidoVenda
       Font.Name = 'Segoe UI'
       Font.Style = [fsBold]
       ParentFont = False
-      TabOrder = 6
+      TabOrder = 1
+      OnClick = btnBuscarPedidoClick
     end
   end
   object pnlGrid: TPanel
@@ -196,6 +203,7 @@ object frmPedidoVenda: TfrmPedidoVenda
       TitleFont.Height = -12
       TitleFont.Name = 'Segoe UI'
       TitleFont.Style = []
+      OnKeyDown = gridPedidosVendaKeyDown
     end
   end
   object pnlFooter: TPanel
@@ -262,13 +270,14 @@ object frmPedidoVenda: TfrmPedidoVenda
       Font.Style = [fsBold]
       ParentFont = False
       TabOrder = 0
+      OnClick = btnNovoPedidoClick
     end
-    object btnExcluirPedido: TButton
+    object btnSalvarPedido: TButton
       Left = 144
       Top = 18
       Width = 115
       Height = 25
-      Caption = 'Excluir Pedido'
+      Caption = 'Gravar Pedido'
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
       Font.Height = -12
@@ -276,6 +285,32 @@ object frmPedidoVenda: TfrmPedidoVenda
       Font.Style = [fsBold]
       ParentFont = False
       TabOrder = 1
+      OnClick = btnSalvarPedidoClick
     end
+    object btnCancelarPedido: TButton
+      Left = 273
+      Top = 18
+      Width = 115
+      Height = 25
+      Caption = 'Cancelar Pedido'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -12
+      Font.Name = 'Segoe UI'
+      Font.Style = [fsBold]
+      ParentFont = False
+      TabOrder = 2
+      OnClick = btnCancelarPedidoClick
+    end
+  end
+  object cdsProdutosPedido: TClientDataSet
+    Aggregates = <>
+    Params = <>
+    Left = 520
+    Top = 320
+  end
+  object dsProdutosPedido: TDataSource
+    Left = 528
+    Top = 328
   end
 end
